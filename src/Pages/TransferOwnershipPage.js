@@ -25,7 +25,7 @@ function TransferOwnershipPage() {
     if (!currentAccount) {
       await connectToEthereum();
     }
-
+    //New Web3 Rules
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(contractAddress, contractABI, signer);
