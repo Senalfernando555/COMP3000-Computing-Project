@@ -1,0 +1,70 @@
+/* Header.css */
+
+header {
+    background-color: #0c1446;
+    padding: 30px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+    display: inline-flex;
+    justify-content: space-around;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul li {
+    color: #fff;
+    align-items: center;
+    margin: 0 8px; 
+    text-align: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    position: relative; /* Added relative position for the ::after pseudo-element */
+    transition: background-color 0.3s ease;
+}
+
+/* Add the line under the link using the ::after pseudo-element */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #54b3d6;
+    transform: scaleX(0); /* Initially hide the line */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+/* When hovering, animate the line */
+nav ul li a:hover::after {
+    transform: scaleX(1); /* Show the line */
+    transform-origin: bottom left;
+}
+
+nav ul li a.active {
+    background-color: #4CAF50; /* Active link color */
+}
+
+a {
+    color: #54b3d6;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+a:hover {
+    /* box-shadow: inset 100px 0 0 0 #54b3d6; */
+    color: white;
+}
