@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { BrowserProvider, Contract } from "ethers";
 import contractABI from "../ContractABI.json";
+import "../Styles/RegisterDrugPage.css";
 
 const contractAddress = "0x357EAFa5ee93C33219140CF55338757e1A7cA7B8";
 
@@ -51,7 +52,7 @@ function RegisterDrugPage() {
     };
 
     return (
-        <div>
+        <div className="register-container">
             <h2>Register Drug</h2>
             <div>
                 <input type="text" placeholder="Drug ID" value={drugId} onChange={(e) => setDrugId(e.target.value)} />
