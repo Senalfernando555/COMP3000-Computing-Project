@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Header.css"; // Assuming you have a CSS file for styling
+import "./Header.css"; 
 
 function Header() {
   return (
@@ -13,6 +13,7 @@ function Header() {
           <li><Link to="/verify-drug">Verify Drug</Link></li>
           <li><Link to="/drug-details">Drug Details</Link></li>
           <li><Link to="/mark-counterfit">Mark Counterfit</Link></li>
+          <li><Link to="/drug-list">Drug List</Link></li>
           <li><Link to="/mark-counterfit">Login/Register</Link></li>
         </ul>
       </nav>

@@ -1,0 +1,50 @@
+/* 1. Responsive wrapper with clearfix */
+.table-responsive {
+  overflow-x: auto;                      
+  -webkit-overflow-scrolling: touch;   
+  margin-right:2.2rem;
+  align-content: center;
+}
+.clearfix::after {
+  content: "";
+  display: table;                       
+  clear: both;
+}
+
+/* 2. Floating card‑style table */
+.floating-table {
+  float: right;                        
+  width: 60%;                           
+  margin: 20px;                  
+  border-collapse: collapse;           
+  border: 2px solid #0000004a;         
+  border-radius: 8px;                  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  background-color: #fff;              
+}
+
+/* 3. Header styling */
+.floating-table th {
+  background-color: #0971c7ec;             
+  color: #fff;
+  font-weight: bold;
+  padding: 12px;
+  text-align: left;
+}
+
+/* 4. Cell styling */
+.floating-table td {
+  padding: 12px;
+  border-top: 1px solid #e0e0e0;        
+}
+
+/* 5. Zebra stripes */
+.floating-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;            
+}
+
+/* 6. Hover effect */
+.floating-table tbody tr:hover {
+  background-color: #e3f2fd;            
+  transition: background-color 0.25s;
+}
