@@ -1,67 +1,79 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
 import contractABI from "../ContractABI.json";
+import "../Styles/MarkasCounterfeit.css";   
 
-const contractAddress = "0x357EAFa5ee93C33219140CF55338757e1A7cA7B8";
+const contractAddress = "0x3bE619f7c833829c6EE58126aEA57450370AC40E";
 
 function MarkDrugAsCounterfeit() {
   const [drugId, setDrugId] = useState("");
   const [status, setStatus] = useState("");
 
-  // Function to mark a drug as counterfeit
   const markDrugAsCounterfeit = async (drugId) => {
     if (!window.ethereum) {
       setStatus("Ethereum provider not found. Install MetaMask.");
       return;
     }
-
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-      const contract = new ethers.Contract(contractAddress, contractABI, signer);
-      const accounts = await provider.listAccounts();
-      const manufacturerAddress = accounts[0];
+      const contract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
 
       setStatus("Transaction in progress...");
       const tx = await contract.markAsCounterfeit(drugId);
       await tx.wait();
-
-      setStatus(`Drug ${drugId} has been marked as counterfeit. Transaction hash: ${tx.hash}`);
+      setStatus(`success|Drug ${drugId} marked counterfeit`);
     } catch (error) {
-      setStatus(`Error: ${error.message}`);
+      setStatus(`error|${error.message}`);
     }
   };
 
-  // Function to handle input change
-  const handleInputChange = (e) => {
-    setDrugId(e.target.value);
-  };
-
-  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (drugId.trim()) {
       markDrugAsCounterfeit(drugId);
     } else {
-      setStatus("Please enter a valid Drug ID.");
+      setStatus("error|Please enter a valid Drug ID.");
     }
   };
 
+  // split status into flag and message
+  const [flag, message] = status.split("|");
+
   return (
-    <div>
+    <>
+    <div className="mark-drug-page">
+                <div className="header">
+                    <p>Please make sure you enter your valid drug details. 
+                       Ensure all information is accurate before submitting.</p>
+                </div>
+    </div>
+    <div className="counterfeit-card">
       <h1>Mark Drug as Counterfeit</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="counterfeit-form" onSubmit={handleSubmit}>
         <input
           type="text"
-          color="Blue"
           value={drugId}
-          onChange={handleInputChange}
+          onChange={(e) => setDrugId(e.target.value)}
           placeholder="Enter Drug ID"
         />
-        <button type="submit">Mark as Counterfeit</button>
+        <button type="submit">Mark Counterfeit</button>
       </form>
-      <p>{status}</p>
+      {message && (
+        <p
+          className={`counterfeit-status ${
+            flag === "success" ? "success" : "error"
+          }`}
+        >
+          {message}
+        </p>
+      )}
     </div>
+  </>
   );
 }
 

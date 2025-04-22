@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { ethers } from "ethers"; 
 import contractABI from "../ContractABI.json";
+import "../Styles/VerifyDrug.css";
 
-const contractAddress = "0x357EAFa5ee93C33219140CF55338757e1A7cA7B8"; 
+const contractAddress = "0x3bE619f7c833829c6EE58126aEA57450370AC40E"; 
 
 function VerifyDrugPage() {
   const [drugId, setDrugId] = useState("");
@@ -22,23 +23,42 @@ function VerifyDrugPage() {
   };
 
   return (
-    <div>
-      <h2>Verify Drug</h2>
-      <div>
+    <>
+    <div className="verify-drug-page">
+                <div className="header">
+                    <p>Please make sure you enter your valid drug details. 
+                       Ensure all information is accurate before submitting.</p>
+                </div>
+    </div>
+    <div className="verify-card">
+      <h2 className="verify-title">Verify Drug</h2>
+      <div className="verify-form">
         <input
+          className="verify-input"
           type="text"
-          placeholder="Drug ID"
+          placeholder="Enter Drug ID"
           value={drugId}
-          onChange={(e) => setDrugId(e.target.value)}
+          onChange={e => setDrugId(e.target.value)}
         />
-        <button onClick={verifyDrug}>Verify Drug</button>
+        <button className="verify-button" onClick={verifyDrug}>
+          Verify
+        </button>
       </div>
       {isAuthentic !== null && (
-        <div>
-          <p>{isAuthentic ? "This drug is authentic." : "This drug is counterfeit."}</p>
+        <div
+          className={
+            isAuthentic 
+              ? "verify-result verify-success" 
+              : "verify-result verify-fail"
+          }
+        >
+          {isAuthentic 
+            ? "✅ This drug is authentic." 
+            : "❌ This drug is counterfeit."}
         </div>
       )}
     </div>
+  </>
   );
 }
 

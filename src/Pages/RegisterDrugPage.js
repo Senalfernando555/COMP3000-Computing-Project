@@ -4,7 +4,7 @@ import { BrowserProvider, Contract } from "ethers";
 import contractABI from "../ContractABI.json";
 import "../Styles/RegisterDrugPage.css";
 
-const contractAddress = "0x357EAFa5ee93C33219140CF55338757e1A7cA7B8";
+const contractAddress = "0x3bE619f7c833829c6EE58126aEA57450370AC40E";
 
 function RegisterDrugPage() {
     const [drugId, setDrugId] = useState("");
@@ -12,7 +12,6 @@ function RegisterDrugPage() {
     const [manufactureDate, setManufactureDate] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
     const [currentAccount, setCurrentAccount] = useState("");
-
 
     // Connect to MetaMask
     const connectToEthereum = async () => {
@@ -51,18 +50,28 @@ function RegisterDrugPage() {
         }
     };
 
-    return (
-        <div className="register-container">
-            <h2>Register Drug</h2>
-            <div>
-                <input type="text" placeholder="Drug ID" value={drugId} onChange={(e) => setDrugId(e.target.value)} />
-                <input type="text" placeholder="Drug Name" value={name} onChange={(e) => setName(e.target.value)} />
-                <input type="date" placeholder="Manufacture Date" value={manufactureDate} onChange={(e) => setManufactureDate(e.target.value)} />
-                <input type="date" placeholder="Expiry Date" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} />
-                <br />
-                <button onClick={registerDrug}>Register Drug</button>
+    return (       
+        <>
+            <div className="register-drug-page">
+                <div className="header">
+                    <p>Please make sure you enter your valid drug details. 
+                       Ensure all information is accurate before submitting.</p>
+                </div>
             </div>
-        </div>
+            <div className="register-container">
+                <h2>Register Drug</h2>
+                <div className="register-form">
+                    <input type="text" placeholder="Drug ID" value={drugId} onChange={(e) => setDrugId(e.target.value)} />
+                    <input type="text" placeholder="Drug Name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <p>Enter Manufacture Date</p>
+                    <input type="date" placeholder="Manufacture Date" value={manufactureDate} onChange={(e) => setManufactureDate(e.target.value)} />
+                    <p>Enter Expiry Date</p>
+                    <input type="date" placeholder="Expiry Date" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} />
+                    <br />
+                    <button onClick={registerDrug}>Register Drug</button>
+                </div>
+            </div>
+        </>
     );
 }
 

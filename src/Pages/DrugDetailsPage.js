@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { ethers } from "ethers"; 
 import contractABI from "../ContractABI.json";
+import "../Styles/DrugDetails.css";
 
 
-const contractAddress = "0x357EAFa5ee93C33219140CF55338757e1A7cA7B8"; 
+const contractAddress = "0x3bE619f7c833829c6EE58126aEA57450370AC40E"; 
 
 function DrugDetailsPage() {
   const [drugId, setDrugId] = useState("");
@@ -33,30 +34,70 @@ function DrugDetailsPage() {
   };
 
   return (
-    <div>
-      <h2>Drug Details</h2>
-      <div>
+    <>
+    <div className="drug-details-page">
+        <div className="header">
+            <p>Please make sure you enter your valid drug details. 
+               Ensure all information is accurate before submitting.</p>
+        </div>
+    </div>
+    <div className="details-card">
+      <h2 className="details-title">Drug Details</h2>
+
+      <div className="details-form">
         <input
+          className="details-input"
           type="text"
-          placeholder="Drug ID"
+          placeholder="Enter Drug ID"
           value={drugId}
-          onChange={(e) => setDrugId(e.target.value)}
+          onChange={e => setDrugId(e.target.value)}
         />
-        <button onClick={getDrugDetails}>Get Drug Details</button>
+        <button
+          className="details-button"
+          onClick={getDrugDetails}
+        >
+          Fetch
+        </button>
       </div>
+
       {drugDetails && (
-        <div>
-          <p>Name: {drugDetails[0]}</p>
-          <p>Manufacturer: {drugDetails[1]}</p>
-          Manufacture Date:{" "}
-          {new Date(Number(drugDetails[2]) * 1000).toLocaleDateString()}
-          Expiry Date:{" "}
-          {new Date(Number(drugDetails[2]) * 1000).toLocaleDateString()}
-          <p>Current Owner: {drugDetails[4]}</p>
-          <p>Authenticity: {drugDetails[5] ? "Authentic" : "Counterfeit"}</p>
+        <div className="details-result">
+          <div className="detail-row">
+            <span className="detail-label">Name:</span>
+            <span className="detail-value">{drugDetails[0]}</span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Manufacturer:</span>
+            <span className="detail-value">{drugDetails[1]}</span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Manufacture Date:</span>
+            <span className="detail-value">
+              {new Date(Number(drugDetails[2]) * 1000)
+                .toLocaleDateString()}
+            </span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Expiry Date:</span>
+            <span className="detail-value">
+              {new Date(Number(drugDetails[3]) * 1000)
+                .toLocaleDateString()}
+            </span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Current Owner:</span>
+            <span className="detail-value">{drugDetails[4]}</span>
+          </div>
+          <div className="detail-row">
+            <span className="detail-label">Authenticity:</span>
+            <span className={`detail-value ${drugDetails[5] ? 'auth-yes' : 'auth-no'}`}>
+              {drugDetails[5] ? '✅ Authentic' : '❌ Counterfeit'}
+            </span>
+          </div>
         </div>
       )}
     </div>
+  </>
   );
 }
 
