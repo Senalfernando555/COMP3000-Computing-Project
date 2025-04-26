@@ -12,7 +12,7 @@
 } 
 
 .verify-card {
-    max-width: 400px;
+    max-width:480px;
     margin: 40px auto;
     padding: 24px;
     background: #fff;
@@ -37,6 +37,9 @@
   
   .verify-input {
     flex: 1;
+    flex: 1;
+    width: 60%;
+    margin-left: 18%;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;

@@ -12,7 +12,8 @@ function DrugDetailsPage() {
 
   const getDrugDetails = async () => {
     try {
-      // Connect to the Ethereum provider (MetaMask or another wallet)
+      
+      // Connect to the Ethereum provider (MetaMask)
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(contractAddress, contractABI, signer);

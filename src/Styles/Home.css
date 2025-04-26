@@ -1,0 +1,84 @@
+/* src/Pages/Home.css */
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: sans-serif;
+    color: #333;
+  }
+  
+  .home-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #eee;
+  }
+  
+  .home-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .home-header p {
+    font-size: 1.1rem;
+    color: #666;
+  }
+  
+  .feature-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    grid-auto-flow: column;
+  }
+
+  .feature-grid2 {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    grid-auto-flow: column;
+  }
+  
+  .feature-card {
+    display: block;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    margin:3rem;
+    padding: 3rem;
+    height: 10rem;
+    width: 10rem;
+  }
+  
+  
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    color: #784848;
+  }
+  
+  .feature-card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  
+  .feature-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+  }
+  
+  .home-footer {
+    text-align: center;
+    margin-top: 60px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    font-size: 0.85rem;
+    color: #999;
+  }
+  

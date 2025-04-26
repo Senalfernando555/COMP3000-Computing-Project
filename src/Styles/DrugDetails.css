@@ -11,6 +11,8 @@
 } 
 
 .details-card {
+    width: 100%;
+    min-width: 300px;
     max-width: 480px;
     margin: 40px auto;
     padding: 24px;
@@ -38,6 +40,8 @@
   
   .details-input {
     flex: 1;
+    width: 60%;
+    margin-left: 18%;
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
